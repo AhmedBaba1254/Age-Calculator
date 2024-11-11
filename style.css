@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-image: url('/Users/ahmaa009/Documents/1IM prosjekter/Vaffel butikk/age-bilde-2 1.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+  }
+  
+  .container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .input-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100px; /* Makes the input fields larger */
+    height: 60px; /* Increases the height for a square shape */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px; /* Increases font size */
+    background-color: #2a7b83; /* Dark background for input fields */
+    color: white; /* White text */
+    font-weight: bold;
+  }
+  
+  input[type="text"]::placeholder {
+    color: white; /* White placeholder text */
+    opacity: 0.7; /* Adjust opacity if you want it lighter */
+  }
+  
+  button {
+    background-color: #5b5fff; /* Button color */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px; /* Makes the button text larger */
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .resources {
+    margin-top: 20px;
+    background-color: rgba(51, 51, 51, 0.8); /* Dark background with some transparency */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      background-image: url('/Users/ahmaa009/Documents/1IM prosjekter/Vaffel butikk/age-bilde-2 1.avif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: black;
+    }
+    
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: black;
+    }
+    
+    .bold-intro {
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    /* Justert boks for Dag, Måned, År */
+    .label-box {
+      background-color: #2a7b83;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-around;
+      gap: 15px; /* Legger til mellomrom mellom elementene */
+    }
+    
+    .input-section {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      gap: 15px; /* Legger til mellomrom mellom inputfeltene */
+    }
+    
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    
+    /* Justert inputboks */
+    input[type="text"] {
+      width: 80px;
+      height: 30px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 14px;
+      background-color: white;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    input[type="text"]::placeholder {
+      color: #888;
+      opacity: 0.7;
+    }
+    
+    button {
+      background-color: #5b5fff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+    }
+    
+    /* Oransje boks med stiplet rød border for resultat */
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #ef9f09; /* Oransje farge */
+      font-size: 18px;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      border: 2px dotted red; /* Stiplet rød border */
+    }
+    
+    .resources {
+      margin-top: 20px;
+      background-color: rgba(51, 51, 51, 0.8);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Age Calculator</h1>
+    <p class="bold-intro">Hei, dette er en enkel nettside for å regne ut hvor gammel du er 😊.</p>
+    <p>Vennligst skriv inn fødselsdatoen din og trykk på knappen nede.</p>
+    
+    <p class="section-title">Fødselsdato:</p>
+    
+    <!-- Større boks for "Dag", "Måned", og "År" -->
+    <div class="label-box">
+      <span>Dag</span>
+      <span>Måned</span>
+      <span>År</span>
+    </div>
+
+    <div class="input-section">
+      <div class="input-container">
+        <input type="text" id="day" maxlength="2" placeholder="DD">
+      </div>
+      <div class="input-container">
+        <input type="text" id="month" maxlength="2" placeholder="MM">
+      </div>
+      <div class="input-container">
+        <input type="text" id="year" maxlength="4" placeholder="YYYY">
+      </div>
+    </div>
+    
+    <button onclick="calculateAge()">Regn ut min alder</button>
+    <div id="result" class="result-box">din alder er:</div>
+    
+    <div class="resources">
+      <h3>Ressurser</h3>
+      <ul>
+        <li><a href="https://www.w3schools.com/" target="_blank">https://www.w3schools.com/</a></li>
+        <li>Digital Clock prosjektet</li>
+        <li>Rotating Image Gallery prosjektet</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function calculateAge() {
+      const day = parseInt(document.getElementById("day").value);
+      const month = parseInt(document.getElementById("month").value);
+      const year = parseInt(document.getElementById("year").value);
+    
+      if (isNaN(day) || isNaN(month) || isNaN(year)) {
+        document.getElementById("result").textContent = "Vennligst fyll ut alle feltene riktig.";
+        return;
+      }
+    
+      const today = new Date();
+      let ageYears = today.getFullYear() - year;
+      let ageMonths = today.getMonth() + 1 - month;
+      let ageDays = today.getDate() - day;
+    
+      if (ageDays < 0) {
+        ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        ageMonths--;
+      }
+    
+      if (ageMonths < 0) {
+        ageMonths += 12;
+        ageYears--;
+      }
+    
+      document.getElementById("result").textContent = `din alder er: ${ageYears} år ${ageMonths} måneder og ${ageDays} dager`;
+    }
+  </script>
+</body>
+</html>
